@@ -24,7 +24,7 @@ public abstract class RoomObject : MonoBehaviour
 		if(room == Room.currentRoom)
 		{
 			GUI.depth = 1;
-			Rect rect = RoomGUI.GetRoomObjectScreenRect (Room.currentRoom, this);
+			Rect rect = RoomGUI.GetRoomObjectScreenRectCentered (Room.currentRoom, this);
 			if(GUI.Button (rect, sprite.texture, buttonStyle))
 			{
 				OnClick ();

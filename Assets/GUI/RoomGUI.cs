@@ -36,18 +36,33 @@ public class RoomGUI : GUIFrame
 	public static Rect GetRoomObjectScreenRect(Room room, RoomObject roomObject)
 	{
 		Vector2 positionInWorld = new Vector2(roomObject.transform.position.x, roomObject.transform.position.y);
-		float scaleX = room.roomSprite.textureRect.width / Screen.width;
-		float scaleY = room.roomSprite.textureRect.height / Screen.height;
+		float scaleX = singleton.screenRect.width / room.roomSprite.textureRect.width;
+		float scaleY = singleton.screenRect.height / room.roomSprite.textureRect.height;
+		scaleX = scaleY;
 		float width = roomObject.sprite.textureRect.width;
 		float height = roomObject.sprite.textureRect.height;
 		return new Rect ((int)(singleton.screenRect.center.x + scaleX * positionInWorld.x), (int)(singleton.screenRect.center.y + scaleY * positionInWorld.y), (int)(scaleX*width), (int)(scaleY*height));
 	}
 
+	public static Rect GetRoomObjectScreenRectCentered(Room room, RoomObject roomObject)
+	{
+		Vector2 positionInWorld = new Vector2(roomObject.transform.position.x, roomObject.transform.position.y);
+		float scaleX = singleton.screenRect.width / room.roomSprite.textureRect.width;
+		float scaleY = singleton.screenRect.height / room.roomSprite.textureRect.height;
+		scaleX = scaleY;
+		float width = roomObject.sprite.textureRect.width;
+		float height = roomObject.sprite.textureRect.height;
+		return new Rect ((int)(singleton.screenRect.center.x + scaleX * (positionInWorld.x-width/2)),
+		                 (int)(singleton.screenRect.center.y + scaleY * (positionInWorld.y-height/2)),
+		                 (int)(scaleX*width), (int)(scaleY*height));
+	}
+
 	public static Vector2 GetRoomObjectPositionOnScreen(Room room, RoomObject roomObject)
 	{
 		Vector2 positionInWorld = new Vector2 (roomObject.transform.position.x, roomObject.transform.position.y);
-		float scaleX = room.roomSprite.textureRect.width / Screen.width;
-		float scaleY = room.roomSprite.textureRect.height / Screen.height;
+		float scaleX = singleton.screenRect.width / room.roomSprite.textureRect.width;
+		float scaleY = singleton.screenRect.height / room.roomSprite.textureRect.height;
+		scaleX = scaleY;
 		return new Vector2(singleton.screenRect.center.x + scaleX*positionInWorld.x, singleton.screenRect.center.y + scaleY*positionInWorld.y);
 	}
 }

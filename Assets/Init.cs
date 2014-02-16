@@ -46,8 +46,8 @@ public class Init : MonoBehaviour {
 			Room nextRoom = rooms[i];
 			if(lastRoom != null)
 			{
-				Room.CreateDoor(new Vector2(200, 0), doorSprite, lastRoom, nextRoom);
-				Room.CreateDoor(new Vector2(-200, 0), doorSprite, nextRoom, lastRoom);
+				Room.CreateDoor(new Vector2(200, -80), doorSprite, lastRoom, nextRoom);
+				Room.CreateDoor(new Vector2(-200, 210), doorSprite, nextRoom, lastRoom);
 			}
 			lastRoom = nextRoom;
 		}
