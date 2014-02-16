@@ -8,6 +8,8 @@ public class Init : MonoBehaviour {
 	public Sprite doorSprite = null;
 	public Sprite ladderSprite = null;
 	public Sprite exitSprite = null;
+	public Sprite stairsDownSprite = null;
+	public Sprite stairsUpSprite = null;
 
 	public static Init current = null;
 
@@ -64,8 +66,8 @@ public class Init : MonoBehaviour {
 
 	void CreateLadder(Floor floor1, int ladderIndex1, Floor floor2, int ladderIndex2)
 	{
-		Room.CreateDoor(new Vector2(0, 200), ladderSprite, floor1.rooms[ladderIndex1], floor2.rooms[ladderIndex2]);
-		Room.CreateDoor(new Vector2(0, -200), ladderSprite, floor2.rooms[ladderIndex2], floor1.rooms[ladderIndex1]);
+		Room.CreateDoor(new Vector2(300, 150), stairsDownSprite, floor1.rooms[ladderIndex1], floor2.rooms[ladderIndex2]);
+		Room.CreateDoor(new Vector2(-70, -170), stairsUpSprite, floor2.rooms[ladderIndex2], floor1.rooms[ladderIndex1]);
 	}
 
 	void CreateObjects(List<Floor> floors)
