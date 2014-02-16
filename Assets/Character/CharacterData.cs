@@ -23,7 +23,7 @@ public class CharacterData : MonoBehaviour {
 		return energy;
 	}
 	public void fight(int enemyLevel) {
-		int energyDelta = 2;//enemyLevel - weaponlevel;
+		int energyDelta = enemyLevel - weaponlevel;
 		int healthDelta = Mathf.Min (-energyDelta, 0); // never gain health
 		energy += energyDelta;
 		health += healthDelta;
