@@ -26,6 +26,7 @@ public class InventoryGUI : GUIFrame {
 			base.OnGUI();
 			GUI.Label(new Rect(screenRect.x+10, screenRect.y, screenRect.width, 50), "Stats");
 			GUI.Label (new Rect (screenRect.x+10, screenRect.y + 20, screenRect.width, 100), "Health: " + charData.health);
+			GUI.Label (new Rect (screenRect.x+10, screenRect.y + 34, screenRect.width, 100), "Energy: " + charData.energy);
 
 			if(Floor.currentFloor != null)
 			{
