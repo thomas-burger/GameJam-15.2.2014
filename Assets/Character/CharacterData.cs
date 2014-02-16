@@ -6,7 +6,7 @@ public class CharacterData : MonoBehaviour {
 
 	private int energy = 101;
 	private int weaponLevel = 5;
-	private int weaponType = 0;
+	private WeaponType weaponType = WeaponType.BARE_HANDS;
 	private int health= 10;
 
 	// Use this for initialization
@@ -26,20 +26,12 @@ public class CharacterData : MonoBehaviour {
 	public int getWeaponLevel(){ 
 		return weaponLevel;
 	}
-	public int getWeaponType(){ 
+	public WeaponType getWeaponType(){ 
 		return weaponType;
 	}
 	public void fight(int enemyLevel, EnemyType enemyType) {
-		int weaponDelta = 0;
-		if (weaponType == 0) {
-			if (enemyType == EnemyType.Spider) {
-				weaponDelta = 1;
-			} else if(enemyType == EnemyType.Zombie) {
-				weaponDelta = -1;
-			} else {
-				weaponDelta = 0;
-			}
-		}
+		int weaponDelta = Combat.getModifier(weaponType, enemyType);
+
 		int energyDelta = enemyLevel - (weaponLevel + weaponDelta);
 		int healthDelta = Mathf.Min (-energyDelta, 0); // never gain health
 		energy += energyDelta;
