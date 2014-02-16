@@ -29,7 +29,7 @@ public class ButtonTest : MonoBehaviour
 			charData.health -=1;
 			if (charData.health<=0){
 				charData.health=10;
-				ExitScreen.singleton.hidden = false;
+				Game.EndGame("You died.");
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class LogGUI : GUIFrame {
@@ -6,7 +6,6 @@ public class LogGUI : GUIFrame {
 
 	// Use this for initialization
 	void Start () {
-		hidden = true;
 		if(singleton == null)
 		{
 			singleton = this;

@@ -35,7 +35,7 @@ public class Room {
 	{
 		CharacterData.singleton.energy--;
 		if (CharacterData.singleton.energy <= 0) {
-			Game.EndGame();
+			Game.EndGame("You have no energy left.");
 		}
 		currentRoom = targetRoom;
 		Floor.currentFloor = targetRoom.floor;

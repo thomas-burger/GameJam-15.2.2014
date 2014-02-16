@@ -17,7 +17,7 @@ public class Exit : RoomObject {
 	{
 		if(!Room.EnemiesInCurrentRoom())
 		{
-			ExitScreen.singleton.hidden = false;
+			Game.EndGame ("You reached the exit.");
 		}
 		else
 		{

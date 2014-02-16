@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class InventoryGUI : GUIFrame {
@@ -7,7 +7,6 @@ public class InventoryGUI : GUIFrame {
 
 	// Use this for initialization
 	void Start () {
-		hidden = true;
 		if(singleton == null)
 		{
 			singleton = this;
