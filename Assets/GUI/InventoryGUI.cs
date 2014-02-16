@@ -24,17 +24,28 @@ public class InventoryGUI : GUIFrame {
 		if(!hidden)
 		{
 			base.OnGUI();
-			GUI.Label(new Rect(screenRect.x+10, screenRect.y, screenRect.width, 50), "Stats");
-			GUI.Label (new Rect (screenRect.x+10, screenRect.y + 34, screenRect.width, 100), "Energy: " + charData.getEnergy());
-			GUI.Label (new Rect (screenRect.x+10, screenRect.y + 20, screenRect.width, 100), "Health: " + charData.getHealth());
-
+			int cursorY = (int)screenRect.y;
+			int cursorX = (int)screenRect.x+10;
+			GUI.Label(new Rect(cursorX, cursorY, screenRect.width, 50), "Stats");
+			cursorY += 20;
+			GUI.Label (new Rect (cursorX, cursorY, screenRect.width, 100), "H " + charData.getHealth());
+			cursorX+=50;
+			GUI.Label (new Rect (cursorX, cursorY, screenRect.width, 100), "E: " + charData.getEnergy());
+			cursorX-=50;
+			cursorY+=14;
+			var enemy = Room.getEnemy ();
+			if (enemy!=null){
+				GUI.Label (new Rect (cursorX, cursorY, screenRect.width, 100), "monster: " + enemy.level);
+			}
 			if(Floor.currentFloor != null)
 			{
-				GUI.Label (new Rect (screenRect.x+10, screenRect.y + 50, screenRect.width, 100), "CurrentFloor: " + Floor.currentFloor.floorName);
+				cursorY +=18;
+				GUI.Label (new Rect (cursorX, cursorY, screenRect.width, 100),  Floor.currentFloor.floorName);
 			}
 			if(Room.currentRoom != null)
 			{
-				GUI.Label (new Rect (screenRect.x+10, screenRect.y + 70, screenRect.width, 100), "CurrentRoom: " + Room.currentRoom.roomName);
+				cursorX+=50;
+				GUI.Label (new Rect (cursorX, cursorY, screenRect.width, 100),  Room.currentRoom.roomName);
 			}
 		}
 	}
