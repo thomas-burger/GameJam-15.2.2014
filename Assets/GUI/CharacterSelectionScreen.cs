@@ -36,7 +36,7 @@ public class CharacterSelectionScreen : GUIFrame
 		hidden = false;
 	}
 
-	private Sprite GetCharacterSprite(CharacterClass characterClass)
+	public Sprite GetCharacterSprite(CharacterClass characterClass)
 	{
 		switch(characterClass)
 		{
@@ -60,7 +60,7 @@ public class CharacterSelectionScreen : GUIFrame
 		}
 	}
 
-	private string GetCharacterName(CharacterClass characterClass)
+	public string GetCharacterName(CharacterClass characterClass)
 	{
 		return characterClass.ToString ();
 	}
