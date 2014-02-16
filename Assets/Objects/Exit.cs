@@ -17,7 +17,8 @@ public class Exit : RoomObject {
 	{
 		if(!Room.EnemiesInCurrentRoom())
 		{
-			Game.EndGame ("You reached the exit.");
+			int score = CharacterData.singleton.getHealth()*10+CharacterData.singleton.getEnergy();
+			Game.EndGame ("You reached the exit. Score: "+score);
 		}
 		else
 		{
