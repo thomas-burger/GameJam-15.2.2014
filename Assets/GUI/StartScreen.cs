@@ -43,13 +43,13 @@ public class StartScreen : GUIFrame
 			GUI.Label(new Rect(screenRect.x, screenRect.y, width, 0.2f*height), "GameJam(15.2.2014)", titleStyle);
 			//Input field for random seed
 			randomSeedString = GUI.TextField(new Rect(screenRect.center.x-100, screenRect.y+100, 200, 25), randomSeedString);
+			//character selection screen
+			CharacterSelectionScreen.singleton.Show(new Rect(screenRect.x, screenRect.y + 200, screenRect.width, screenRect.height-200));
 			//new game button
 			if(GUI.Button(new Rect(screenRect.center.x-50, screenRect.y+150, 100, 50), "Start game"))
 			{
 				Game.StartGame(randomSeedString.GetHashCode());
 			}
-			//character selection screen
-			CharacterSelectionScreen.singleton.Show(new Rect(screenRect.x, screenRect.y + 200, screenRect.width, screenRect.height-200));
 		}
 	}
 }

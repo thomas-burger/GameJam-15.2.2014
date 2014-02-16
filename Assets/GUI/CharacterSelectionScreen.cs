@@ -19,10 +19,10 @@ public class CharacterSelectionScreen : GUIFrame
 		{
 			singleton = this;
 		}
-		defaultSprite = Resources.Load<Sprite> ("Reaper");
-		warriorSprite = Resources.Load<Sprite> ("Warrior");
-		wizardSprite = Resources.Load<Sprite> ("Wizard");
-		thiefSprite = Resources.Load<Sprite> ("Thief");
+		defaultSprite = Resources.Load<Sprite> ("reaper");
+		warriorSprite = Resources.Load<Sprite> ("spider");
+		wizardSprite = Resources.Load<Sprite> ("reaper");
+		thiefSprite = Resources.Load<Sprite> ("zombie");
 	}
 	
 	// Update is called once per frame
