@@ -54,7 +54,7 @@ public class Room {
 		return false;
 	}
 
-	public static RoomObject CreateObject(RoomObjectType type, Vector2 position, Sprite sprite, Room room = null)
+	private static RoomObject CreateObject(RoomObjectType type, Vector2 position, Sprite sprite, Room room = null)
 	{
 		if(room == null)
 		{
@@ -95,10 +95,40 @@ public class Room {
 		return roomObject;
 	}
 
+	public static Exit CreateExit(Vector2 position, Sprite sprite, Room room)
+	{
+		Exit exit = Room.CreateObject (RoomObjectType.Exit, position, sprite, room) as Exit;
+		return exit;
+	}
+
 	public static Door CreateDoor(Vector2 position, Sprite sprite, Room source, Room target)
 	{
 		Door door = Room.CreateObject (RoomObjectType.Door, position, sprite, source) as Door;
 		door.targetRoom = target;
 		return door;
+	}
+
+	public static Enemy CreateEnemy(Vector2 position, EnemyType type, int level, Room room = null)
+	{
+		Enemy enemy = Room.CreateObject (RoomObjectType.Enemy, position, null, room) as Enemy;
+		enemy.enemyType = type;
+		enemy.level = level;
+		return enemy;
+	}
+
+	public static Enemy CreateRandomEnemy(Vector2 position, int percentChance, Room room = null)
+	{
+		bool createEnemy = (Random.Range(0, 100) < percentChance);
+		if(createEnemy)
+		{
+			int numEnemyTypes = System.Enum.GetValues (typeof(EnemyType)).Length;
+			int rndEnemyType = Random.Range (0, numEnemyTypes);
+			int rndEnemyLevel = Random.Range (Enemy.minLevel, Enemy.maxLevel);
+			return CreateEnemy (position, (EnemyType)rndEnemyType, rndEnemyLevel, room);
+		}
+		else
+		{
+			return null;
+		}
 	}
 }
