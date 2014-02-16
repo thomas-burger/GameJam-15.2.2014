@@ -6,7 +6,8 @@ public enum RoomObjectType
 {
 	Enemy,
 	Door,
-	Exit
+	Exit,
+	Decor
 }
 
 public class Room {
@@ -76,6 +77,11 @@ public class Room {
 			roomObject = go.AddComponent<Exit>();
 			break;
 		}
+		case RoomObjectType.Decor:
+		{
+			roomObject = go.AddComponent<Decor>();
+			break;
+		}
 		default:
 		{
 			Debug.Log ("Error: Creating " + type + " in room not implemented");
@@ -112,6 +118,13 @@ public class Room {
 		return enemy;
 	}
 
+	public static Decor CreateDecor(Vector2 position, DecorType type, Room room)
+	{
+		Decor decor = Room.CreateObject (RoomObjectType.Decor, position, null, room) as Decor;
+		decor.decorType = type;
+		return decor;
+	}
+
 	public static Enemy CreateRandomEnemy(Vector2 position, int percentChance, Room room )
 	{
 		bool createEnemy = (Random.Range(0, 100) < percentChance);
@@ -126,5 +139,29 @@ public class Room {
 		{
 			return null;
 		}
+	}
+
+	public static List<Decor> CreateRandomDecors(Vector2 position, int percentChance, Room room )
+	{
+		List<Decor> decors = new List<Decor>();
+		List<Vector2> positions = new List<Vector2>();
+		positions.Add (new Vector2 (-240,40)); // table
+		positions.Add (new Vector2 (-200,-180)); // left candle 1
+		positions.Add (new Vector2 (-350,-100)); // left candle 2
+		positions.Add (new Vector2 (0,300)); // barrel
+		positions.Add (new Vector2 (100,-230)); // right candle
+		positions.Add (new Vector2 (400,-50)); // banner
+		positions.Add (new Vector2 (80,100)); // rug
+		for(int i=0; i<System.Enum.GetValues (typeof(DecorType)).Length; i++)
+		{
+			bool createDecor = (Random.Range(0, 100) < percentChance);
+			if(createDecor)
+			{
+				Decor decor = CreateDecor (positions[i], (DecorType)i, room);
+				decors.Add(decor);
+			}
+		}
+		//return CreateDecor (position, (DecorType)2, room);
+		return decors;
 	}
 }
