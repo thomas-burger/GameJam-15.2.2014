@@ -49,8 +49,8 @@ public class Init : MonoBehaviour {
 			Room nextRoom = rooms[i];
 			if(lastRoom != null)
 			{
-				Room.CreateDoor(new Vector2(200, -80), doorSprite, lastRoom, nextRoom);
-				Room.CreateDoor(new Vector2(-200, 210), doorSprite, nextRoom, lastRoom);
+				Room.CreateDoor(new Vector2(240, -80), doorSprite, lastRoom, nextRoom);
+				Room.CreateDoor(new Vector2(-235, 195), doorSprite, nextRoom, lastRoom);
 			}
 			lastRoom = nextRoom;
 		}
@@ -78,6 +78,7 @@ public class Init : MonoBehaviour {
 			foreach(Room room in floor.rooms)
 			{
 				Room.CreateRandomEnemy(new Vector2(0, 0), 50, room);
+				Room.CreateRandomDecors(new Vector2(30, 30), 100, room);
 			}
 		}
 	}

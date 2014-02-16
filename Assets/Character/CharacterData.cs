@@ -8,56 +8,69 @@ public enum CharacterClass
 	Thief
 }
 
-public class CharacterData : MonoBehaviour {
+public class CharacterData : MonoBehaviour
+{
 	public static CharacterData singleton = null;
-
 	private CharacterClass characterClass;
 	public readonly int maxEnergy = 100;
-	private int energy = 101;
-	private int weaponLevel = 5;
-	private int weaponType = 0;
-	private int health= 10;
+		private int energy;
+		private int weaponLevel;
+		private WeaponType weaponType ;
+		private int health;
 
 	// Use this for initialization
-	void Start () {
-		if(singleton == null)
+		void Start ()
 		{
+				if (singleton == null) {
 			singleton = this;
 		}
 
+				initialize ();
+
 	}
-	public CharacterClass GetClass()
+
+		public void initialize ()
 	{
+				energy = 100;
+				weaponLevel = 5;
+				weaponType = WeaponType.BARE_HANDS;
+				health = 10;
+		}
+
+		public CharacterClass GetClass ()
+		{
 		return characterClass;
 	}
-	public void SetClass(CharacterClass characterClass)
+
+		public void SetClass (CharacterClass characterClass)
 	{
 		this.characterClass = characterClass;
 	}
 
-	public int getHealth(){
+		public int getHealth ()
+		{
 		return health;
 	}
-	public int getEnergy(){
+
+		public int getEnergy ()
+		{
 		return energy;
 	}
-	public int getWeaponLevel(){ 
+
+		public int getWeaponLevel ()
+		{ 
 		return weaponLevel;
 	}
-	public int getWeaponType(){ 
+
+		public WeaponType getWeaponType ()
+		{ 
 		return weaponType;
 	}
-	public void fight(int enemyLevel, EnemyType enemyType) {
-		int weaponDelta = 0;
-		if (weaponType == 0) {
-			if (enemyType == EnemyType.Spider) {
-				weaponDelta = 1;
-			} else if(enemyType == EnemyType.Zombie) {
-				weaponDelta = -1;
-			} else {
-				weaponDelta = 0;
-			}
-		}
+
+		public void fight (int enemyLevel, EnemyType enemyType)
+		{
+				int weaponDelta = Combat.getModifier (weaponType, enemyType);
+
 		int energyDelta = enemyLevel - (weaponLevel + weaponDelta);
 		int healthDelta = Mathf.Min (-energyDelta, 0); // never gain health
 		energy += energyDelta;
@@ -68,23 +81,31 @@ public class CharacterData : MonoBehaviour {
 	void checkForDeath ()
 	{
 		if (energy <= 0 || health <= 0) {
-			ExitScreen.singleton.Hide ();
+						Game.EndGame ("You Died, Noob!");
 		}
 	}
-	public void oneStep(){
+
+		public void oneStep ()
+		{
 		updateEnergy (-weaponLevel);
 	}
-	public void updateEnergy(int delta){
+
+		public void updateEnergy (int delta)
+		{
 		energy += delta;
+				energy = Mathf.Min (100, energy);
 		checkForDeath ();
 	}
-	public void updateHealth(int delta){
+
+		public void updateHealth (int delta)
+		{
 		health += delta;
 		checkForDeath ();
 	}
 
 	// Update is called once per frame
-	void Update () {
+		void Update ()
+		{
 	
 	}
 }
