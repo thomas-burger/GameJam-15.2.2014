@@ -46,19 +46,22 @@ public class FloorMap : MonoBehaviour {
 
 	void OnGUI()
 	{
-		if(mapActive)
+		if(Game.Running)
 		{
-			if(GUI.Button(new Rect(0, 0, 50, 50), "Map"))
+			if(mapActive)
 			{
-				mapActive = false;
+				if(GUI.Button(new Rect(0, 0, 50, 50), "Map"))
+				{
+					mapActive = false;
+				}
+				DrawFloorMap();
 			}
-			DrawFloorMap();
-		}
-		else
-		{
-			if(GUI.Button(new Rect(0, 0, 50, 50), "Map"))
+			else
 			{
-				mapActive = true;
+				if(GUI.Button(new Rect(0, 0, 50, 50), "Map"))
+				{
+					mapActive = true;
+				}
 			}
 		}
 	}

@@ -19,6 +19,7 @@ public class Init : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		current = this;
+		Game.ShowStartScreen ();
 	}
 
 	public void InitDungeon(int seed)

@@ -35,7 +35,7 @@ public class Room {
 	{
 		CharacterData.singleton.energy--;
 		if (CharacterData.singleton.energy <= 0) {
-			ExitScreen.singleton.hidden = false;
+			Game.EndGame();
 		}
 		currentRoom = targetRoom;
 		Floor.currentFloor = targetRoom.floor;

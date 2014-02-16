@@ -7,7 +7,6 @@ public class RoomGUI : GUIFrame
 
 	// Use this for initialization
 	void Start () {
-		hidden = true;
 		if(singleton == null)
 		{
 			singleton = this;
