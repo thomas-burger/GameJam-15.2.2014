@@ -18,8 +18,10 @@ public class Game
 		StartScreen.current.Hide ();
 		Init.current.InitDungeon(randomSeed);
 		InventoryGUI.singleton.Show ();
+		CharacterScreen.singleton.Show ();
 		//LogGUI.singleton..Show();
 		RoomGUI.singleton.Show ();
+		CharacterData.singleton.SetClass (CharacterSelectionScreen.singleton.chosen);
 		Game.running = true;
 	}
 
