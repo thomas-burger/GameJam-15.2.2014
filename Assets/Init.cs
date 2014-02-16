@@ -12,8 +12,8 @@ public class Init : MonoBehaviour {
 
 	public static Init current = null;
 
-	public static readonly int numRoomsPerFloor = 10;
-	public static readonly int numFloors = 10;
+	public static readonly int numRoomsPerFloor = 3;
+	public static readonly int numFloors = 3;
 
 	// Use this for initialization
 	void Start () {
@@ -34,7 +34,7 @@ public class Init : MonoBehaviour {
 			Floor.CreateFloor(rooms, "Floor"+floorNum);
 		}
 		CreateLadders (Floor.floors);
-		Room.CreateObject(RoomObjectType.Exit, new Vector2(0, 200), exitSprite, Floor.floors[Floor.floors.Count-1].rooms[5]);
+		Room.CreateObject(RoomObjectType.Exit, new Vector2(0, 200), exitSprite, Floor.floors[Floor.floors.Count-1].rooms[numRoomsPerFloor-1]);
 		Room.GoToRoom(Floor.floors [0].rooms [numFloors/2]);
 	}
 
