@@ -1,10 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum CharacterClass
+{
+	Warrior,
+	Wizard,
+	Thief
+}
+
 public class CharacterData : MonoBehaviour {
 	public static CharacterData singleton = null;
 
-	private int energy = 100;
+	
+	private CharacterClass characterClass;
+	private int energy = 101;
 	private int weaponLevel = 5;
 	private WeaponType weaponType = WeaponType.BARE_HANDS;
 	private int health= 10;
@@ -17,6 +26,15 @@ public class CharacterData : MonoBehaviour {
 		}
 
 	}
+	public CharacterClass GetClass()
+	{
+		return characterClass;
+	}
+	public void SetClass(CharacterClass characterClass)
+	{
+		this.characterClass = characterClass;
+	}
+
 	public int getHealth(){
 		return health;
 	}
