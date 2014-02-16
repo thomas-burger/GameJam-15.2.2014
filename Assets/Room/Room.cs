@@ -33,10 +33,7 @@ public class Room {
 
 	public static void GoToRoom(Room targetRoom)
 	{
-		CharacterData.singleton.energy--;
-		if (CharacterData.singleton.energy <= 0) {
-			ExitScreen.singleton.hidden = false;
-		}
+		CharacterData.singleton.updateEnergy (-1);
 		currentRoom = targetRoom;
 		Floor.currentFloor = targetRoom.floor;
 	}
@@ -123,7 +120,7 @@ public class Room {
 			int numEnemyTypes = System.Enum.GetValues (typeof(EnemyType)).Length;
 			int rndEnemyType = Random.Range (0, numEnemyTypes);
 			int rndEnemyLevel = Random.Range (Enemy.minLevel, Enemy.maxLevel);
-			return CreateEnemy (position, (EnemyType)rndEnemyType, rndEnemyLevel, room);
+			return CreateEnemy (position, (EnemyType)rndEnemyType, 7, room);
 		}
 		else
 		{

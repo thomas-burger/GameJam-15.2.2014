@@ -22,15 +22,11 @@ public class ButtonTest : MonoBehaviour
 	{
 		if (GUI.Button (buttonRect1, "add health point"))
 		{
-			charData.health +=1;
+			charData.updateHealth(1);
 		}
 		if(GUI.Button (buttonRect2, "subtract health point"))
 		{
-			charData.health -=1;
-			if (charData.health<=0){
-				charData.health=10;
-				ExitScreen.singleton.hidden = false;
-			}
+			charData.updateHealth(-1);
 		}
 	}
 }
