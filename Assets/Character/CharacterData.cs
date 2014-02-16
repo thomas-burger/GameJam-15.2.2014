@@ -29,11 +29,18 @@ public class CharacterData : MonoBehaviour {
 	public int getWeaponType(){ 
 		return weaponType;
 	}
-	public void fight(int enemyLevel) {
-		int weaponDelta;
+	public void fight(int enemyLevel, EnemyType enemyType) {
+		int weaponDelta = 0;
 		if (weaponType == 0) {
-				}
-		int energyDelta = enemyLevel - weaponLevel;
+			if (enemyType == EnemyType.Spider) {
+				weaponDelta = 1;
+			} else if(enemyType == EnemyType.Zombie) {
+				weaponDelta = -1;
+			} else {
+				weaponDelta = 0;
+			}
+		}
+		int energyDelta = enemyLevel - (weaponLevel + weaponDelta);
 		int healthDelta = Mathf.Min (-energyDelta, 0); // never gain health
 		energy += energyDelta;
 		health += healthDelta;

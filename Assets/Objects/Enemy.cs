@@ -55,7 +55,7 @@ public class Enemy : RoomObject
 
 	protected override void OnClick()
 	{
-		CharacterData.singleton.fight (level);
+		CharacterData.singleton.fight (level, enemyType);
 		room.RemoveObject (this);
 		Destroy (this.gameObject);
 	}
