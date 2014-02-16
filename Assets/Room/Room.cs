@@ -33,6 +33,10 @@ public class Room {
 
 	public static void GoToRoom(Room targetRoom)
 	{
+		CharacterData.singleton.energy--;
+		if (CharacterData.singleton.energy <= 0) {
+			ExitScreen.singleton.hidden = false;
+		}
 		currentRoom = targetRoom;
 		Floor.currentFloor = targetRoom.floor;
 	}
