@@ -38,6 +38,7 @@ public class ExitScreen : GUIFrame
 			GUI.Label(screenRect, message, labelStyle);
 			if (GUI.Button (new Rect (screenRect.center.x - 50, screenRect.center.y + 50, 100, 50), "Start new game"))
 			{
+				Application.LoadLevel ("scene");
 				Game.ShowStartScreen();
 			}
 		}
