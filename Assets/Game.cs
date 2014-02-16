@@ -3,31 +3,46 @@ using System.Collections;
 
 public class Game
 {
-	private static bool running = false;
-	public static bool Running{ get { return running; } }
+		private static bool running = false;
 
-	public static void ShowStartScreen()
-	{
-		ExitScreen.singleton.Hide ();
-		StartScreen.current.Show ();
-	}
+		public static bool Running{ get { return running; } }
 
-	public static void StartGame(int randomSeed)
-	{
-		Debug.Log ("Start game");
-		StartScreen.current.Hide ();
-		Init.current.InitDungeon(randomSeed);
-		InventoryGUI.singleton.Show ();
-		CharacterScreen.singleton.Show ();
-		//LogGUI.singleton..Show();
-		RoomGUI.singleton.Show ();
-		CharacterData.singleton.SetClass (CharacterSelectionScreen.singleton.chosen);
-		Game.running = true;
-	}
+		public static void ShowStartScreen ()
+		{
+				ExitScreen.singleton.Hide ();
+				if (InventoryGUI.singleton != null) {
+						InventoryGUI.singleton.Hide ();
+				}
+		if (CharacterScreen.singleton != null) {
+			CharacterScreen.singleton.Hide ();
+		}
+		if (RoomGUI.singleton != null) {
+			RoomGUI.singleton.Hide ();
+		}
+			
+				StartScreen.current.Show ();
+		}
 
-	public static void EndGame(string message)
-	{
-		running = false;
-		ExitScreen.singleton.Show (message);
-	}
+		public static void StartGame (int randomSeed)
+		{
+				Debug.Log ("Start game");
+				StartScreen.current.Hide ();
+				Init.current.InitDungeon (randomSeed);
+				
+				InventoryGUI.singleton.Show ();
+				CharacterScreen.singleton.Show ();
+				//LogGUI.singleton..Show();
+
+				RoomGUI.singleton.Show ();
+
+				CharacterData.singleton.SetClass (CharacterSelectionScreen.singleton.chosen);
+				Game.running = true;
+		}
+
+		public static void EndGame (string message)
+		{
+				running = false;
+				ExitScreen.singleton.Show (message);
+				CharacterData.singleton.initialize ();
+		}
 }
