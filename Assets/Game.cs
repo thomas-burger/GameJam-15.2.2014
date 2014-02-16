@@ -19,7 +19,7 @@ public class Game
 		StartScreen.current.hidden = true;
 		Init.current.InitDungeon(randomSeed);
 		InventoryGUI.singleton.hidden = false;
-		LogGUI.singleton.hidden = false;
+		//LogGUI.singleton.hidden = false;
 		RoomGUI.singleton.hidden = false;
 		Game.running = true;
 	}
