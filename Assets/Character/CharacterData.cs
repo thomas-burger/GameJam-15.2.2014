@@ -33,7 +33,7 @@ public class CharacterData : MonoBehaviour {
 	void checkForDeath ()
 	{
 		if (energy <= 0 || health <= 0) {
-			ExitScreen.singleton.hidden = false;
+			ExitScreen.singleton.Hide ();
 		}
 	}
 
