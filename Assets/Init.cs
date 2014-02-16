@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class Init : MonoBehaviour {
 
 	public Sprite roomSprite = null;
-	public Sprite enemySprite = null;
 	public Sprite doorSprite = null;
 	public Sprite ladderSprite = null;
 	public Sprite exitSprite = null;

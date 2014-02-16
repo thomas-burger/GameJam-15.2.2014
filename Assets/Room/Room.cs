@@ -43,7 +43,6 @@ public class Room {
 		{
 			if(!roomObject.friendly)
 			{
-				Debug.Log ("enemyObject");
 				return true;
 			}
 		}
