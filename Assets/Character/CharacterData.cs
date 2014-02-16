@@ -4,7 +4,7 @@ using System.Collections;
 public class CharacterData : MonoBehaviour {
 	public static CharacterData singleton = null;
 
-	private int energy = 101;
+	private int energy = 100;
 	private int weaponLevel = 5;
 	private WeaponType weaponType = WeaponType.BARE_HANDS;
 	private int health= 10;
@@ -50,6 +50,7 @@ public class CharacterData : MonoBehaviour {
 	}
 	public void updateEnergy(int delta){
 		energy += delta;
+		energy = Mathf.Min (100, energy);
 		checkForDeath ();
 	}
 	public void updateHealth(int delta){
