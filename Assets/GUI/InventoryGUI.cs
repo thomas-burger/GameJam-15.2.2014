@@ -28,9 +28,11 @@ public class InventoryGUI : GUIFrame {
 			GUI.Label(new Rect(cursorX, cursorY, screenRect.width, 50), "Stats");
 			cursorY += 20;
 			GUI.Label (new Rect (cursorX, cursorY, screenRect.width, 100), "H " + charData.getHealth());
-			cursorX+=50;
+			cursorX+=40;
 			GUI.Label (new Rect (cursorX, cursorY, screenRect.width, 100), "E: " + charData.getEnergy());
-			cursorX-=50;
+			cursorX+=40;
+			GUI.Label (new Rect (cursorX, cursorY, screenRect.width, 100), "W: " + charData.getWeaponLevel());
+			cursorX-=80;
 			cursorY+=14;
 			var enemy = Room.getEnemy ();
 			if (enemy!=null){
