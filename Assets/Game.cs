@@ -13,12 +13,12 @@ public class Game
 				if (InventoryGUI.singleton != null) {
 						InventoryGUI.singleton.Hide ();
 				}
-		if (CharacterScreen.singleton != null) {
-			CharacterScreen.singleton.Hide ();
-		}
-		if (RoomGUI.singleton != null) {
-			RoomGUI.singleton.Hide ();
-		}
+				if (CharacterScreen.singleton != null) {
+						CharacterScreen.singleton.Hide ();
+				}
+				if (RoomGUI.singleton != null) {
+						RoomGUI.singleton.Hide ();
+				}
 			
 				StartScreen.current.Show ();
 		}
@@ -27,7 +27,7 @@ public class Game
 		{
 				Debug.Log ("Start game");
 				StartScreen.current.Hide ();
-				Init.current.InitDungeon (randomSeed);
+		Init.current.InitDungeon (randomSeed);
 				
 				InventoryGUI.singleton.Show ();
 				CharacterScreen.singleton.Show ();
@@ -44,5 +44,5 @@ public class Game
 				running = false;
 				ExitScreen.singleton.Show (message);
 				CharacterData.singleton.initialize ();
-		}
+	}
 }
