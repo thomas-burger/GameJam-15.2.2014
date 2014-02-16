@@ -33,7 +33,7 @@ public class Room {
 
 	public static void GoToRoom(Room targetRoom)
 	{
-		CharacterData.singleton.updateEnergy (-1);
+		CharacterData.singleton.oneStep ();
 		currentRoom = targetRoom;
 		Floor.currentFloor = targetRoom.floor;
 	}

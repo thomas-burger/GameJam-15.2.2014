@@ -6,6 +6,7 @@ public class CharacterData : MonoBehaviour {
 
 	private int energy = 101;
 	private int weaponLevel = 5;
+	private int weaponType = 0;
 	private int health= 10;
 
 	// Use this for initialization
@@ -25,7 +26,13 @@ public class CharacterData : MonoBehaviour {
 	public int getWeaponLevel(){ 
 		return weaponLevel;
 	}
+	public int getWeaponType(){ 
+		return weaponType;
+	}
 	public void fight(int enemyLevel) {
+		int weaponDelta;
+		if (weaponType == 0) {
+				}
 		int energyDelta = enemyLevel - weaponLevel;
 		int healthDelta = Mathf.Min (-energyDelta, 0); // never gain health
 		energy += energyDelta;
@@ -39,7 +46,9 @@ public class CharacterData : MonoBehaviour {
 			ExitScreen.singleton.Hide ();
 		}
 	}
-
+	public void oneStep(){
+		updateEnergy (-weaponLevel);
+	}
 	public void updateEnergy(int delta){
 		energy += delta;
 		checkForDeath ();
