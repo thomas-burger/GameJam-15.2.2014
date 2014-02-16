@@ -27,6 +27,10 @@ public class ButtonTest : MonoBehaviour
 		if(GUI.Button (buttonRect2, "subtract health point"))
 		{
 			charData.health -=1;
+			if (charData.health<=0){
+				charData.health=10;
+				ExitScreen.singleton.hidden = false;
+			}
 		}
 	}
 }
