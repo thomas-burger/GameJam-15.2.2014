@@ -49,7 +49,14 @@ public class Room {
 		}
 		return false;
 	}
-
+	public static Enemy getEnemy(){
+		foreach (RoomObject roomObject in currentRoom.objects) {
+			if (!roomObject.friendly) {
+				return (Enemy)roomObject;
+			}
+		}
+		return null;
+	}
 	private static RoomObject CreateObject(RoomObjectType type, Vector2 position, Sprite sprite, Room room)
 	{
 		if(room == null)
@@ -120,7 +127,7 @@ public class Room {
 			int numEnemyTypes = System.Enum.GetValues (typeof(EnemyType)).Length;
 			int rndEnemyType = Random.Range (0, numEnemyTypes);
 			int rndEnemyLevel = Random.Range (Enemy.minLevel, Enemy.maxLevel);
-			return CreateEnemy (position, (EnemyType)rndEnemyType, 7, room);
+			return CreateEnemy (position, (EnemyType)rndEnemyType, rndEnemyLevel, room);
 		}
 		else
 		{
