@@ -54,7 +54,7 @@ public class Room {
 		return false;
 	}
 
-	private static RoomObject CreateObject(RoomObjectType type, Vector2 position, Sprite sprite, Room room = null)
+	private static RoomObject CreateObject(RoomObjectType type, Vector2 position, Sprite sprite, Room room)
 	{
 		if(room == null)
 		{
@@ -108,7 +108,7 @@ public class Room {
 		return door;
 	}
 
-	public static Enemy CreateEnemy(Vector2 position, EnemyType type, int level, Room room = null)
+	public static Enemy CreateEnemy(Vector2 position, EnemyType type, int level, Room room)
 	{
 		Enemy enemy = Room.CreateObject (RoomObjectType.Enemy, position, null, room) as Enemy;
 		enemy.enemyType = type;
@@ -116,7 +116,7 @@ public class Room {
 		return enemy;
 	}
 
-	public static Enemy CreateRandomEnemy(Vector2 position, int percentChance, Room room = null)
+	public static Enemy CreateRandomEnemy(Vector2 position, int percentChance, Room room )
 	{
 		bool createEnemy = (Random.Range(0, 100) < percentChance);
 		if(createEnemy)
