@@ -12,6 +12,7 @@ public class CharacterData : MonoBehaviour {
 	public static CharacterData singleton = null;
 
 	private CharacterClass characterClass;
+	public readonly int maxEnergy = 100;
 	private int energy = 101;
 	private int weaponLevel = 5;
 	private int weaponType = 0;
