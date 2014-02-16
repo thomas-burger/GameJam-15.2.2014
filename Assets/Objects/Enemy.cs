@@ -4,7 +4,7 @@ using System.Collections;
 public enum EnemyType
 {
 	Spider,
-	Wraith,
+	Reaper,
 	Zombie
 }
 
@@ -13,9 +13,9 @@ public class Enemy : RoomObject
 	public EnemyType enemyType;
 	public int level;
 
-	public static string SpiderFileName = "";
-	public static string WraithFileName = "";
-	public static string ZombieFileName = "";
+	public static string SpiderFileName = "spider";
+	public static string ReaperFileName = "reaper";
+	public static string ZombieFileName = "zombie";
 
 	public static readonly int minLevel = 1;
 	public static readonly int maxLevel = 10;
@@ -30,9 +30,9 @@ public class Enemy : RoomObject
 			sprite = Resources.Load<Sprite>(SpiderFileName);
 			break;
 		}
-		case EnemyType.Wraith:
+		case EnemyType.Reaper:
 		{
-			sprite = Resources.Load<Sprite>(WraithFileName);
+			sprite = Resources.Load<Sprite>(ReaperFileName);
 			break;
 		}
 		case EnemyType.Zombie:
