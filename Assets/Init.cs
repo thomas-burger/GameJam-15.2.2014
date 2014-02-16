@@ -6,6 +6,7 @@ public class Init : MonoBehaviour {
 
 	public Sprite roomSprite = null;
 	public Sprite doorSprite = null;
+	public Sprite openDoorSprite = null;
 	public Sprite ladderSprite = null;
 	public Sprite exitSprite = null;
 	public Sprite stairsDownSprite = null;
@@ -50,7 +51,7 @@ public class Init : MonoBehaviour {
 			if(lastRoom != null)
 			{
 				Room.CreateDoor(new Vector2(240, -80), doorSprite, lastRoom, nextRoom);
-				Room.CreateDoor(new Vector2(-235, 195), doorSprite, nextRoom, lastRoom);
+				Room.CreateDoor(new Vector2(-265, 225), openDoorSprite, nextRoom, lastRoom);
 			}
 			lastRoom = nextRoom;
 		}
