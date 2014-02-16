@@ -34,7 +34,8 @@ public class Init : MonoBehaviour {
 			Floor.CreateFloor(rooms, "Floor"+floorNum);
 		}
 		CreateLadders (Floor.floors);
-		Room.CreateObject(RoomObjectType.Exit, new Vector2(0, 200), exitSprite, Floor.floors[Floor.floors.Count-1].rooms[5]);
+		CreateObjects (Floor.floors);
+		Room.CreateExit (new Vector2(0, 200), exitSprite, Floor.floors[Floor.floors.Count-1].rooms[5]);
 		Room.GoToRoom(Floor.floors [0].rooms [numFloors/2]);
 	}
 
@@ -68,9 +69,15 @@ public class Init : MonoBehaviour {
 		Room.CreateDoor(new Vector2(0, -200), ladderSprite, floor2.rooms[ladderIndex2], floor1.rooms[ladderIndex1]);
 	}
 
-	void CreateObjects()
+	void CreateObjects(List<Floor> floors)
 	{
-
+		foreach(Floor floor in floors)
+		{
+			foreach(Room room in floor.rooms)
+			{
+				Room.CreateRandomEnemy(new Vector2(0, 0), 50, room);
+			}
+		}
 	}
 	
 	// Update is called once per frame
