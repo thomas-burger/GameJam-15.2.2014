@@ -4,6 +4,10 @@ using System.Collections;
 public class StartScreen : GUIFrame
 {
 	public static StartScreen current = null;
+
+	private GUIStyle titleStyle = new GUIStyle();
+
+	string randomSeedString = "Insert random seed";
 	
 	// Use this for initialization
 	void Awake ()
@@ -12,6 +16,9 @@ public class StartScreen : GUIFrame
 		{
 			current = this;
 		}
+		titleStyle.fontSize = 20;
+		titleStyle.alignment = TextAnchor.MiddleCenter;
+		titleStyle.normal.textColor = Color.white;
 	}
 	
 	// Update is called once per frame
@@ -24,9 +31,16 @@ public class StartScreen : GUIFrame
 		if(!hidden)
 		{
 			base.OnGUI ();
-			if(GUI.Button(new Rect(screenRect.center.x-50, screenRect.center.y-50, 100, 100), "Start game"))
+			float width = screenRect.width;
+			float height = screenRect.height;
+			//title
+			GUI.Label(new Rect(screenRect.x, screenRect.y, width, 0.2f*height), "GameJam(15.2.2014)", titleStyle);
+			//Input field for random seed
+			randomSeedString = GUI.TextField(new Rect(screenRect.center.x-100, screenRect.center.y-100, 200, 25), randomSeedString);
+			//new game button
+			if(GUI.Button(new Rect(screenRect.center.x-50, screenRect.center.y-50, 100, 50), "Start game"))
 			{
-				Game.StartGame();
+				Game.StartGame(randomSeedString.GetHashCode());
 			}
 		}
 	}

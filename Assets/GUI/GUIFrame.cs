@@ -6,7 +6,7 @@ public class GUIFrame : MonoBehaviour
 	public Rect frameRect;
 	protected Rect screenRect;
 	public bool relativeToScreenSize;
-	public bool hidden = true;
+	protected bool hidden = true;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +17,15 @@ public class GUIFrame : MonoBehaviour
 	
 	}
 
-
+	public virtual void Show()
+	{
+		this.hidden = false;
+	}
+	
+	public virtual void Hide()
+	{
+		this.hidden = true;
+	}
 
 	public virtual void OnGUI()
 	{

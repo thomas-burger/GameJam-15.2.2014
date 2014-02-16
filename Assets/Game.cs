@@ -6,27 +6,26 @@ public class Game
 	private static bool running = false;
 	public static bool Running{ get { return running; } }
 
-	public static int randomSeed = 0;
-
 	public static void ShowStartScreen()
 	{
-		StartScreen.current.hidden = false;
+		ExitScreen.singleton.Hide ();
+		StartScreen.current.Show ();
 	}
 
-	public static void StartGame()
+	public static void StartGame(int randomSeed)
 	{
 		Debug.Log ("Start game");
-		StartScreen.current.hidden = true;
+		StartScreen.current.Hide ();
 		Init.current.InitDungeon(randomSeed);
-		InventoryGUI.singleton.hidden = false;
-		//LogGUI.singleton.hidden = false;
-		RoomGUI.singleton.hidden = false;
+		InventoryGUI.singleton.Show ();
+		//LogGUI.singleton..Show();
+		RoomGUI.singleton.Show ();
 		Game.running = true;
 	}
 
-	public static void EndGame()
+	public static void EndGame(string message)
 	{
 		running = false;
-		ExitScreen.singleton.hidden = false;
+		ExitScreen.singleton.Show (message);
 	}
 }
